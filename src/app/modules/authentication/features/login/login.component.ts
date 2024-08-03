@@ -1,3 +1,5 @@
+// login.component.ts
+
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import { LoginRequest, LoginResponse } from '../../../../models/auth.model';
@@ -27,12 +29,12 @@ export default class LoginComponent {
 
   get showEmailError(): boolean {
     const { email } = this.form.controls;
-    return this.formSubmitted || email.touched;
+    return this.formSubmitted || email.invalid;
   }
 
   get showPasswordError(): boolean {
     const { password } = this.form.controls;
-    return this.formSubmitted || password.touched;
+    return this.formSubmitted || password.invalid;
   }
 
   handleFormSubmit(): void {
@@ -42,11 +44,11 @@ export default class LoginComponent {
       this.authService.login(payload).subscribe({
         next: (res: LoginResponse) => {
           this.authService.UserToken = res.token;
-          // TODO: redirect to users list screen
+          // Handle successful login, e.g., redirect to a dashboard
         },
         error: (err) => {
           console.error('Login failed', err);
-          // TODO: handle login failure
+          // Handle login error, e.g., show an error message
         }
       });
     }

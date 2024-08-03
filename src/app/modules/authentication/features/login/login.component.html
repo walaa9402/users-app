@@ -19,12 +19,12 @@
           <input id="email" type="text" class="form-control" formControlName="email" autocomplete="email"
             placeholder="name@example.com" [class.is-invalid]="form.get('email')?.invalid && showEmailError">
 
-          @if(form.controls.email.errors && showEmailError) {
+          @if(form.controls['email'].errors && showEmailError) {
           <div class="text-danger">
-            @if(form.controls.email.errors['required']) {
+            @if(form.controls['email'].errors['required']) {
             <small>Email is required.</small>
             }
-            @if(form.controls.email.errors['email']) {
+            @if(form.controls['email'].errors['email']) {
             <small>Email is invalid.</small>
             }
           </div>
@@ -38,7 +38,7 @@
           <input id="password" type="password" class="form-control" formControlName="password"
             autocomplete="new-password" [class.is-invalid]="form.get('password')?.invalid && showEmailError">
 
-          @if(form.controls.password.errors && showPasswordError) {
+          @if(form.controls['password'].errors && showPasswordError) {
           <div class="text-danger">
             <small>Password is required.</small>
           </div>

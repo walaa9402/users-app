@@ -9,8 +9,11 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './top-bar.component.scss'
 })
 export class TopBarComponent {
-  private authService = inject(AuthService);
-  private isLoggedIn: boolean = !!this.authService.UserToken;
+  authService = inject(AuthService);
+
+  get isLoggedIn() {
+    return !!this.authService.UserToken;
+  }
 
   get mainActionText(): string {
     return this.isLoggedIn ? "enquire" : "login"

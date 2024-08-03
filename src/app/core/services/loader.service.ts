@@ -17,8 +17,5 @@ export class LoaderService {
     }
     this.requestCount$.next(this.requestCount$.value - 1);
   }
-  
-  get isLoading() {
-    return this.requestCount$.value;
-  }
+
 }
