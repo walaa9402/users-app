@@ -15,3 +15,7 @@
   background-size: 5%;
   filter: drop-shadow(0 0 0.75rem $whiteColor);
 }
+
+router-outlet {
+  background-color: $backgroundColor;
+}
