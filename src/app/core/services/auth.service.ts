@@ -13,8 +13,8 @@ export class AuthService {
     return localStorage.getItem(STORAGE_KEYS.USER_TOKEN);
   }
 
-  set UserToken(token: string) {
-    localStorage.setItem(STORAGE_KEYS.USER_TOKEN, token)
+  set UserToken(token: string | null) {
+    localStorage.setItem(STORAGE_KEYS.USER_TOKEN, token ?? "")
   }
 
   logout() {
