@@ -36,7 +36,7 @@
             <span class="text-danger">*</span>
           </label>
           <input id="password" type="password" class="form-control" formControlName="password"
-            autocomplete="new-password" [class.is-invalid]="form.get('password')?.invalid && showEmailError">
+            autocomplete="new-password" [class.is-invalid]="form.get('password')?.invalid && showPasswordError">
 
           @if(form.controls['password'].errors && showPasswordError) {
           <div class="text-danger">

@@ -29,12 +29,12 @@ export default class LoginComponent {
 
   get showEmailError(): boolean {
     const { email } = this.form.controls;
-    return this.formSubmitted || email.invalid;
+    return this.formSubmitted || email.touched;
   }
 
   get showPasswordError(): boolean {
     const { password } = this.form.controls;
-    return this.formSubmitted || password.invalid;
+    return this.formSubmitted || password.touched;
   }
 
   handleFormSubmit(): void {
