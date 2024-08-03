@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { FormGroup, FormBuilder, ReactiveFormsModule, FormControl, Validators } from '@angular/forms'
-import { LoginRequest } from '../../../../models/auth.model';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms'
+import { LoginRequest, LoginResponse } from '../../../../models/auth.model';
 import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
@@ -12,6 +12,8 @@ import { AuthService } from '../../../../core/services/auth.service';
 })
 export default class LoginComponent {
 
+  formSubmitted = false;
+
   authService = inject(AuthService);
   formBuilder = inject(FormBuilder);
 
@@ -20,15 +22,22 @@ export default class LoginComponent {
     password: ["", [Validators.required]],
   })
 
-  // form = new FormGroup({
-  //   email: new FormControl(null, [Validators.required, Validators.email]),
-  //   password: new FormControl(null, [Validators.required])
-  // })
+  get showEmailError() {
+    return this.formSubmitted || this.form.controls.email.touched;
+  }
+
+  get showPasswordError() {
+    return this.formSubmitted || this.form.controls.password.touched;
+  }
 
   handleFormSubmit() {
+    this.formSubmitted = true;
     if (this.form.valid) {
       const payload: LoginRequest = this.form.getRawValue();
-      this.authService.login(payload).subscribe
+      this.authService.login(payload).subscribe((res: LoginResponse) => {
+        this.authService.UserToken = res.token;
+
+      })
     }
 
   }
