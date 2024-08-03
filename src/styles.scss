@@ -1,4 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
+@import '../public/assets/styles/variables';
 
 * {
   // outline: 1px solid red;
@@ -14,10 +15,10 @@ body {
 }
 
 .primary_button {
-  background-color: #8E44AD;
-  color: #fff !important;
+  background-color: $primaryColor;
+  color: $whiteColor !important;
   border-radius: 20px;
-  border: #8E44AD;
+  border: $primaryColor;
   padding: 8px 24px;
   text-transform: uppercase;
 }
