@@ -1,0 +1,15 @@
+.loading-wrapper {
+  position: fixed;
+  z-index: 22222;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(000, 000, 000, 0.2);
+  background-image: url("../assets/icons/bouncing-circles.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 5%;
+  filter: drop-shadow(0 0 0.75rem white);
+}
