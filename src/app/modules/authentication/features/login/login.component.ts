@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms'
+import { FormBuilder, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import { LoginRequest, LoginResponse } from '../../../../models/auth.model';
 import { AuthService } from '../../../../core/services/auth.service';
 
@@ -8,38 +8,47 @@ import { AuthService } from '../../../../core/services/auth.service';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrls: ['./login.component.scss'] // Corrected styleUrl to styleUrls
 })
 export default class LoginComponent {
 
-  formSubmitted = false;
+  formSubmitted: boolean = false;
+  form: FormGroup;
 
-  authService = inject(AuthService);
-  formBuilder = inject(FormBuilder);
+  private authService = inject(AuthService);
+  private formBuilder = inject(FormBuilder);
 
-  form = this.formBuilder.group({
-    email: ["", [Validators.required, Validators.email]],
-    password: ["", [Validators.required]],
-  })
-
-  get showEmailError() {
-    return this.formSubmitted || this.form.controls.email.touched;
+  constructor() {
+    this.form = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
+    });
   }
 
-  get showPasswordError() {
-    return this.formSubmitted || this.form.controls.password.touched;
+  get showEmailError(): boolean {
+    const { email } = this.form.controls;
+    return this.formSubmitted || email.touched;
   }
 
-  handleFormSubmit() {
+  get showPasswordError(): boolean {
+    const { password } = this.form.controls;
+    return this.formSubmitted || password.touched;
+  }
+
+  handleFormSubmit(): void {
     this.formSubmitted = true;
     if (this.form.valid) {
       const payload: LoginRequest = this.form.getRawValue();
-      this.authService.login(payload).subscribe((res: LoginResponse) => {
-        this.authService.UserToken = res.token;
-
-      })
+      this.authService.login(payload).subscribe({
+        next: (res: LoginResponse) => {
+          this.authService.UserToken = res.token;
+          // TODO: redirect to users list screen
+        },
+        error: (err) => {
+          console.error('Login failed', err);
+          // TODO: handle login failure
+        }
+      });
     }
-
   }
-
 }
