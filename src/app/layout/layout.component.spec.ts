@@ -24,12 +24,11 @@ describe('LayoutComponent', () => {
 
     fixture = TestBed.createComponent(LayoutComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges(); // Trigger initial data binding and change detection
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  // Additional tests can be added here
 });

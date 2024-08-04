@@ -1,0 +1,28 @@
+@import "../../../../../public/assets/styles/variables";
+
+.modal-header {
+  justify-content: center;
+  border-bottom: 0px !important;
+
+  .modal-title {
+    font-size: 15px;
+    color: $grayedTextColor;
+  }
+}
+
+.modal-body {
+  font-size: 15px;
+  color: $textColor;
+  text-align: center;
+}
+
+.modal-footer {
+  border-top: 0px !important;
+  display: flex;
+  justify-content: space-around;
+
+  .btn {
+    width: 45%;
+    border-radius: 20px;
+  }
+}

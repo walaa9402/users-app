@@ -7,6 +7,10 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@a
 import { ApiInterceptor } from './core/interceptors/api.interceptor';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { LoaderInterceptor } from './core/interceptors/loader.interceptor';
+import { provideStore } from '@ngrx/store';
+import { userReducer } from './store/user.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './store/user.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,5 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withComponentInputBinding()),
     importProvidersFrom([BrowserAnimationsModule]),
     provideAnimations(),
+    provideStore({ users: userReducer }),
+    importProvidersFrom(EffectsModule.forRoot([UserEffects])),
   ]
 };

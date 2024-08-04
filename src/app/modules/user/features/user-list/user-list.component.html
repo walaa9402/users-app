@@ -1,4 +1,35 @@
 <div class="user_header">
   <app-user-list-header />
 </div>
-<p>user-list works!</p>
+<div class="container user_list">
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User Information</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let user of users()">
+        <td>
+          <div class="d-flex align-items-center">
+            <img [src]="user.avatar" alt="{{user.first_name }} {{user.last_name}}" class="rounded-circle me-3"
+              width="50" height="50">
+            <span>{{user.first_name }} {{user.last_name}}</span>
+          </div>
+        </td>
+        <td>
+          <button class="btn btn-outline-primary me-2" (click)="updateUser(user)">
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+          <button class="btn btn-outline-primary" (click)="confirmDelete(user)">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

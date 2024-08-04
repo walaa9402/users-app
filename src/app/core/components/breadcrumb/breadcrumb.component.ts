@@ -13,5 +13,5 @@ export class BreadcrumbComponent {
 
 export interface IBreadcrumbItem {
   label: string;
-  route: string | null;
+  link: string | null;
 }
