@@ -10,6 +10,7 @@ main {
     display: flex;
     justify-content: center;
     box-shadow: 0 .5rem 1rem rgba(black, .15);
+    border-radius: 10px;
 
     figure {
       margin: 0px;
@@ -23,6 +24,7 @@ main {
       align-items: flex-start;
       padding-left: 16px;
       padding-right: 64px;
+      background: $whiteColor;
 
       form {
         width: 100%;

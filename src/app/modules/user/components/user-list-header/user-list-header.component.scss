@@ -1,0 +1,24 @@
+@import "../../../../../../public/assets/styles/variables";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+
+  .header_info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    .header_title {
+      font-size: 30px;
+      line-height: 35px;
+      color: $textColor;
+    }
+
+  }
+
+  button {
+    height: 40px;
+  }
+}

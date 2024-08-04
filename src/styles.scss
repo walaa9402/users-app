@@ -12,6 +12,11 @@ html,
 body {
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "SF NS Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: $baseColor !important;
+}
+
+.primary_text {
+  color: $primaryColor
 }
 
 .primary_button {
@@ -21,4 +26,10 @@ body {
   border: $primaryColor;
   padding: 8px 24px;
   text-transform: uppercase;
+}
+
+.container {
+  margin-right: 135px !important;
+  margin-left: 135px !important;
+  max-width: calc(100% - 270px) !important;
 }

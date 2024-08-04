@@ -16,6 +16,6 @@
   filter: drop-shadow(0 0 0.75rem $whiteColor);
 }
 
-router-outlet {
-  background-color: $backgroundColor;
+.base {
+  background-color: $baseColor;
 }

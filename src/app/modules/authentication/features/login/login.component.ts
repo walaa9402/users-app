@@ -4,6 +4,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import { LoginRequest, LoginResponse } from '../../../../models/auth.model';
 import { AuthService } from '../../../../core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export default class LoginComponent {
 
   private authService = inject(AuthService);
   private formBuilder = inject(FormBuilder);
+  private router = inject(Router);
 
   constructor() {
     this.form = this.formBuilder.group({
@@ -44,7 +46,7 @@ export default class LoginComponent {
       this.authService.login(payload).subscribe({
         next: (res: LoginResponse) => {
           this.authService.UserToken = res.token;
-          // Handle successful login, e.g., redirect to a dashboard
+          this.router.navigate(['/user']);
         },
         error: (err) => {
           console.error('Login failed', err);

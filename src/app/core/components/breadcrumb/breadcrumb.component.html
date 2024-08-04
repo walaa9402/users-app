@@ -1,0 +1,6 @@
+<div class="breadcrumb">
+  @for(item of breadcrumbItems;track item;let i=$index) {
+  <a class="primary_text breadcrumb_item">{{item.label}}</a>
+  @if(i < breadcrumbItems.length-1) { <span class="px-2">/</span> }
+    }
+</div>
